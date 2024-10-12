@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Meeting Transcriber",
+  "version": "1.0",
+  "description": "Transcribe and summarize online meetings",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://meet.google.com/*",
+        "https://zoom.us/*"
+      ],
+      "js": ["src/content.ts"]
+    }
+  ],
+  "background": {
+    "service_worker": "src/background.ts"
+  }
+}
